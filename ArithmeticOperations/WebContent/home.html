@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script
+	src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myForm").on('submit', function (e) {
+            e.preventDefault();
+            $('.error').hide();
+            var number=$('#number').val();
+            var valid=true;
+            var error=""
+            if(number<0){
+            	valid=false;
+                error+='Enter only positive numbers';
+            }
+            if(valid){
+                this.submit();
+            }else {
+                $('.error').html(error)
+                $('.error').show()
+            }
+        });
+    });
+    </script>
+
+</head>
+<body>
+
+	<div class="container">
+		<h2>Vertical (basic) form</h2>
+		<form id="myForm" action="calculate" method="post">
+			<div class="form-group">
+				<label for="Enter the number">Enter the number:</label> <input
+					type="number" class="form-control" id="number"
+					placeholder="Enter the number" name="number" required>
+				<h4 class="error"></h4>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="operation"
+					value="fibonacciSeries" required> Fibonacci series</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="operation" value="prime">
+					Prime</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="operation"
+					value="factorial"> Factorial</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="operation" value="table">
+					Multiplication table</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="operation" value="square">
+					Perfect square</label>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+
+</body>
+</html>
